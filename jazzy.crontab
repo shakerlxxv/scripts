@@ -1,0 +1,2 @@
+00,30 * * * *		/home/bshaver/Documents/scripts/dynamic_ip.sh > /dev/null 2>&1
+11   04 * * *           /home/bshaver/Documents/scripts/backup.sh > /tmp/backup.log 2>&1
