@@ -25,3 +25,9 @@ function check_mount () {
   cp /home/bshaver/.local/share/hamster-applet/hamster.db /mnt/Documents/4DogsTechnologies/BriansNotes/; } ||
     echo "Time Tracking Backup Failure" | mailx -s "BACKUP FAILURE Time Tracking" ${ADMIN}
 
+#
+# 3. backup gnote ( journal and ideas )
+#
+{ check_mount /mnt/Documents &&
+    cd /home/bshaver/.local/share && tar czf /mnt/Documents/4DogsTechnologies/BriansNotes/gnote-backup.tar.gz gnote; } ||
+      echo "Gnote Backup Failure" | mailx -s "BACKUP FAILURE Gnote" ${ADMIN}
