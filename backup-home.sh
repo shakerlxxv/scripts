@@ -4,6 +4,8 @@
 #    1. backup evolution to an external disk.
 ADMIN=shakerlxxv@gmail.com
 BACKUP_FILE=/mnt/Documents/4DogsTechnologies/BriansNotes/evolution-backup.tar.gz
+# evolution requires a display
+export DISPLAY=:0.0
 
 function check_mount () {
     _MNT_SRC=$1
@@ -14,9 +16,14 @@ function check_mount () {
 #
 # 1. backup evolution
 #
-#{ check_mount /mnt/Documents &&
-#   /usr/libexec/evolution/2.30/evolution-backup --backup ${BACKUP_FILE}; } ||
-#  echo "Evolution backup failure" | mailx -s "BACKUP_FAILURE Evolution" ${ADMIN}
+{ check_mount /mnt/Documents &&
+   #/usr/libexec/evolution/2.32/evolution-backup --backup ${BACKUP_FILE}; } ||
+   evolution --quit &&
+   rm -f ${HOME}/.local/share/evolution/.running &&
+   gconftool-2 --dump /apps/evolution > ${HOME}/.local/share/evolution/backup-restore-gconf.xml &&
+   cd ${HOME} && tar chf - .local/share/evolution .config/evolution .camel_certs evolution.dir | gzip > "${BACKUP_FILE}" &&
+   rm -f ${HOME}/evolution.dir; } ||
+  echo "Evolution backup failure" | mailx -s "BACKUP_FAILURE Evolution" ${ADMIN}
 
 #
 # 2. backup Hamster ( time tracking )
