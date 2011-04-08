@@ -16,12 +16,12 @@ function check_mount () {
 
 { check_mount /mnt/Documents &&
   check_mount /media/BIGDISK4 &&
-  ${RS_OPT} /mnt/Documents /media/BIGDISK4; } ||
+  ${RS_OPT} --exclude='*:*' /mnt/Documents /media/BIGDISK4; } ||
 echo "Documents backup failure" | mailx -s "BACKUP FAILURE" ${ADMIN}
 
 { check_mount /mnt/Photos &&
   check_mount "/media/ION DRIVE A" &&
-  ${RS_OPT} --exclude 'Video' /mnt/Photos /media/ION\ DRIVE\ A; } ||
+  ${RS_OPT} --exclude='Video' /mnt/Photos /media/ION\ DRIVE\ A; } ||
 echo "Photos backup failure" | mailx -s "BACKUP_FAILURE" ${ADMIN}
 
 { check_mount /mnt/Music &&

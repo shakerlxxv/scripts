@@ -7,7 +7,8 @@ ADMIN=shakerlxxv@gmail.com
 
 # read last IP
 LAST_ADDR=`cat ${LAST_IP_FILE} 2>/dev/null`
-CUR_ADDR=`/sbin/ip addr show eth0 | grep -w inet | /usr/bin/awk '{print $2}'`
+#CUR_ADDR=`/sbin/ip addr show eth0 | grep -w inet | /usr/bin/awk '{print $2}'`
+CUR_ADDR=`/usr/bin/wget -qO - http://192.168.1.1/htmlV/index.asp | grep "IPPassThruState_IPAddress =" | awk -F\" '{print $2}'`
 
 date >> ~/.dynip_log
 
