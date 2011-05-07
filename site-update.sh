@@ -14,5 +14,5 @@ REPOS="/home/bshaver/sites/Handyworks
 
 for R in ${REPOS}; do
   cd $R
-  git fetch
+  git pull
 done
