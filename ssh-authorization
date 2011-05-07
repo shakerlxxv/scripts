@@ -1,0 +1,23 @@
+#==============================================================================
+# Contains SSH Authorization Information
+#   for use by the ssh-authorization.sh and any cron scripts which need access
+#   to my protected key via an ssh-agent.
+#==============================================================================
+SSH_AGENT_FILE=/tmp/ssh-agent.env
+
+function check_auth() {
+  test -f $SSH_AGENT_FILE || return 1
+  . $SSH_AGENT_FILE > /dev/null 2>&1
+  # check variables are current
+  test -S $SSH_AUTH_SOCK || return 2
+  _PROC_CHECK=`ps -p ${SSH_AGENT_PID} -o comm=`
+  if [ "${_PROC_CHECK}" != "ssh-agent" ]; then
+     return 3
+  fi
+}
+
+function set_auth_sock {
+  ssh-agent > $SSH_AGENT_FILE
+  . $SSH_AGENT_FILE > /dev/null 2>&1
+  ssh-add
+}
