@@ -14,5 +14,7 @@ REPOS="/home/bshaver/sites/Handyworks
 
 for R in ${REPOS}; do
   cd $R
-  git pull
+  # git pull only works for the non-bare repositories, so if it fails,
+  # try git fetch instead.
+  git pull || git fetch
 done
