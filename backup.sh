@@ -14,22 +14,22 @@ function check_mount () {
     return `test -n "${_MNT_CHK}"`
 }
 
-{ check_mount /mnt/Documents &&
-  check_mount /media/BIGDISK4 &&
-  ${RS_OPT} --exclude='*:*' /mnt/Documents /media/BIGDISK4; } ||
+{ check_mount /mnt/documents &&
+  check_mount /mnt/iond &&
+  ${RS_OPT} --exclude='*:*' /mnt/documents /mnt/iond; } ||
 echo "Documents backup failure" | mailx -s "BACKUP FAILURE" ${ADMIN}
 
-{ check_mount /mnt/Photos &&
-  check_mount "/media/ION DRIVE A" &&
-  ${RS_OPT} --exclude='Video' /mnt/Photos /media/ION\ DRIVE\ A; } ||
-echo "Photos backup failure" | mailx -s "BACKUP_FAILURE" ${ADMIN}
-
-{ check_mount /mnt/Music &&
-  check_mount "/media/ION DRIVE C" &&
-  ${RS_OPT} --exclude='Music/[J-Z]*' /mnt/Music /media/ION\ DRIVE\ C; } ||
-echo "Music #1 backup failure" | mailx -s "BACKUP FAILURE" ${ADMIN}
-
-{ check_mount /mnt/Music &&
-  check_mount "/media/ION DRIVE B" &&
-  ${RS_OPT} --include='Music/[J-Z]*' --exclude='Music/*' /mnt/Music /media/ION\ DRIVE\ B; } ||
-echo "Music #2 backup failure" | mailx -s "BACKUP FAILURE" ${ADMIN}
+#{ check_mount /mnt/Photos &&
+#  check_mount "/media/ION DRIVE A" &&
+#  ${RS_OPT} --exclude='Video' /mnt/Photos /media/ION\ DRIVE\ A; } ||
+#echo "Photos backup failure" | mailx -s "BACKUP_FAILURE" ${ADMIN}
+#
+#{ check_mount /mnt/Music &&
+#  check_mount "/media/ION DRIVE C" &&
+#  ${RS_OPT} --exclude='Music/[J-Z]*' /mnt/Music /media/ION\ DRIVE\ C; } ||
+#echo "Music #1 backup failure" | mailx -s "BACKUP FAILURE" ${ADMIN}
+#
+#{ check_mount /mnt/Music &&
+#  check_mount "/media/ION DRIVE B" &&
+#  ${RS_OPT} --include='Music/[J-Z]*' --exclude='Music/*' /mnt/Music /media/ION\ DRIVE\ B; } ||
+#echo "Music #2 backup failure" | mailx -s "BACKUP FAILURE" ${ADMIN}
