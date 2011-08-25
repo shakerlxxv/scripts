@@ -3,3 +3,4 @@
 7 * * * *		/usr/bin/wget -O - -q -t 1 http://4-dogs.biz/cron.php?cron_key=hAyxEQItRL2XtdE-SE3ASmc6VlYGBghuIFW2EV9CfPI#overlay-context=
 05,35 * * * *		/home/bshaver/Documents/scripts/ssh-authorization.sh > /dev/null 2>&1
 03,33 * * * *		/home/bshaver/Documents/scripts/site-update.sh > /dev/null 2>&1
+1 16 * * 2 /home/bshaver/machine-update.pl -m
