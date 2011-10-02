@@ -7,6 +7,7 @@ REPOS="/home/bshaver/sites/Handyworks
 /var/www/redmine/git_repositories/Handyworks.git
 /var/www/redmine/git_repositories/pack_leader.git
 /var/www/redmine/git_repositories/handyworks-r3.git
+/var/www/redmine/git_repositories/tcf_labels.git
 "
 
 . ${SSH_AUTH_INFO}
