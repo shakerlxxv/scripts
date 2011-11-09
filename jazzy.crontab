@@ -1,5 +1,5 @@
 00,30 * * * *		/home/bshaver/Documents/scripts/dynamic_ip.sh > /dev/null 2>&1
-11   04 * * *           /home/bshaver/Documents/scripts/backup.sh > /tmp/backup.log 2>&1
+# BLS Disabled for rsnapshot :: 11   04 * * *           /home/bshaver/Documents/scripts/backup.sh > /tmp/backup.log 2>&1
 7 * * * *		/usr/bin/wget -O - -q -t 1 http://4-dogs.biz/cron.php?cron_key=hAyxEQItRL2XtdE-SE3ASmc6VlYGBghuIFW2EV9CfPI#overlay-context=
 05,35 * * * *		/home/bshaver/Documents/scripts/ssh-authorization.sh > /dev/null 2>&1
 03,33 * * * *		/home/bshaver/Documents/scripts/site-update.sh > /dev/null 2>&1

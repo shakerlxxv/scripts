@@ -14,10 +14,10 @@ function check_mount () {
     return `test -n "${_MNT_CHK}"`
 }
 
-{ check_mount /mnt/documents &&
-  check_mount /mnt/iond &&
-  ${RS_OPT} --exclude='*:*' /mnt/documents /mnt/iond; } ||
-echo "Documents backup failure" | mailx -s "BACKUP FAILURE" ${ADMIN}
+#{ check_mount /mnt/documents &&
+#  check_mount /mnt/iond &&
+#  ${RS_OPT} --exclude='*:*' /mnt/documents /mnt/iond; } ||
+#echo "Documents backup failure" | mailx -s "BACKUP FAILURE" ${ADMIN}
 
 #{ check_mount /mnt/Photos &&
 #  check_mount "/media/ION DRIVE A" &&
