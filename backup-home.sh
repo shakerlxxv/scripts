@@ -3,7 +3,7 @@
 # for specific applications.
 #    1. backup evolution to an external disk.
 ADMIN=shakerlxxv@gmail.com
-BACKUP_PARTITION=/mnt/BrianBackup
+BACKUP_PARTITION=/mnt/backup1
 BACKUP_BASE=${BACKUP_PARTITION}/Backup
 RS_OPT="/usr/bin/rsync -avz --modify-window=1"
 
@@ -19,5 +19,5 @@ mkdir -p ${BACKUP_BASE}
 # backup bshaver home
 #
 { check_mount ${BACKUP_PARTITION} &&
-  ${RS_OPT} --exclude 'Downloads' --exclude '.cache' --exclude '.ccache' /home/bshaver ${BACKUP_BASE}; } ||
+  ${RS_OPT} --exclude 'Downloads' --exclude '.cache' --exclude '.ccache' --exclude '.SpiderOak' /home/bshaver ${BACKUP_BASE}; } ||
 echo "Home backup failure" | mailx -s "BACKUP_FAILURE" ${ADMIN}

@@ -1,0 +1,2 @@
+58 16 * * 5 /home/bshaver/machine-update.pl -m
+15 5 * * *  /home/bshaver/Documents/scripts/backup-home.sh > /tmp/backup-home.log 2>&1
