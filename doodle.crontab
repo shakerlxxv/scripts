@@ -1,2 +1,5 @@
-58 16 * * 5 /home/bshaver/machine-update.pl -m
-15 5 * * *  /home/bshaver/Documents/scripts/backup-home.sh > /tmp/backup-home.log 2>&1
+## BLS - this is now handled by no-ip script through root crontab 00,30 * * * *		/home/bshaver/Documents/scripts/dynamic_ip.sh > /dev/null 2>&1
+#7 * * * *		/usr/bin/wget -O - -q -t 1 http://4-dogs.biz/cron.php?cron_key=hAyxEQItRL2XtdE-SE3ASmc6VlYGBghuIFW2EV9CfPI#overlay-context=
+05,35 * * * *		/home/bshaver/Documents/scripts/ssh-authorization.sh > /dev/null 2>&1
+03,33 * * * *		/home/bshaver/Documents/scripts/site-update.sh > /dev/null 2>&1
+#1 16 * * 2 /home/bshaver/machine-update.pl -m
